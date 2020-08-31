@@ -28,7 +28,7 @@ module.exports = {
             created_at: _date
         })
     },
-    ok: function (message, res, req) {
+    ok: function (message, res, data) {
         return res.status(200).json({
             ...data,
             message: message,
@@ -37,7 +37,7 @@ module.exports = {
             created_at: _date
         })
     },
-    created: function (message, res, req) {
+    created: function (message, res, data) {
         return res.status(201).json({
             ...data,
             message: message,
@@ -91,9 +91,9 @@ module.exports = {
             created_at: _date
         })
     },
-    multiStatus: function (message, res, req) {
+    multiStatus: function (message, res, data) {
         return res.status(207).json({
-            result: req,
+            ...data,
             message: message,
             messageCode: "เนื้อหาในข้อความที่เป็นเอกซ์เอ็มแอล อาจมีรหัสสถานภาพในการตอบรับที่แยกจากกันจำนวนหนึ่ง ขึ้นอยู่กับว่ามีข้อความร้องขอย่อยมากเท่าใด (WebDAV)",
             statusCode: 207,
