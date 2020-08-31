@@ -1,3 +1,5 @@
+const _date = require('./_date')
+
 module.exports = {
     continue: function (message, res, data) {
         return res.status(100).json({
@@ -28,7 +30,7 @@ module.exports = {
     },
     ok: function (message, res, req) {
         return res.status(200).json({
-            result: req,
+            ...data,
             message: message,
             messageCode: "เป็นรหัสตอบรับมาตรฐานสำหรับการร้องขอที่สำเร็จ ข้อความตอบรับที่แท้จริงอาจแตกต่างกันออกไปตามคำสั่งร้องขอที่ใช้ ในการร้องขอแบบ GET เนื้อหาในข้อความตอบรับจะเป็นเนื้อหาที่เกี่ยวข้องกับทรัพยากรที่ร้องขอ ส่วนในการร้องขอแบบ POST เนื้อหาในข้อความตอบรับจะเป็นการอธิบายทรัพยากรหรือผลลัพธ์จากการดำเนินการดังกล่าว เป็นต้น",
             statusCode: 200,
@@ -37,7 +39,7 @@ module.exports = {
     },
     created: function (message, res, req) {
         return res.status(201).json({
-            result: req,
+            ...data,
             message: message,
             messageCode: "การร้องขอได้ดำเนินการแล้ว ซึ่งได้ผลลัพธ์เป็นทรัพยากรที่สร้างขึ้นใหม่บนเครื่องให้บริการ",
             statusCode: 201,
